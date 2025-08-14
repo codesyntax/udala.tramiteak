@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      xml:lang="en"
+      i18n:domain="udala.tramiteak"
+>
+
+
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+        <div tal:define="
+               toc context/table_of_contents|nothing;
+             "
+             tal:condition="context/text"
+             tal:content="structure python:context.text.output_relative_to(view.context)"
+             tal:attributes="
+               class python: toc and 'pat-autotoc' or '';
+             "
+        >
+        </div>
+      </metal:content-core>
+
+      <div class="table-responsive">
+        <table class="listing"
+               id="tramitefiles"
+               tal:define="
+                 human_readable_size nocall:here/@@plone/human_readable_size;
+               "
+               tal:condition="view/files"
+        >
+          <thead>
+            <tr>
+              <th i18n:translate="">
+              Deskargatu dokumentuak
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tal:define="
+                  content_title string:;
+                "
+                tal:repeat="file view/files"
+            >
+              <td>
+                <span tal:replace="file/Title"></span>
+                &nbsp;
+                <br />
+                <tal:condition condition="python:view.is_pdf(file)">
+                  <a href=""
+                     tal:attributes="
+                       href string:${file/absolute_url}/view;
+                     "
+                     i18n:translate="label_view"
+                  >
+                  Ver
+                  </a>
+                |
+                </tal:condition>
+                <a href=""
+                   tal:attributes="
+                     href string:${file/absolute_url}/@@download/file;
+                   "
+                   i18n:translate="label_download"
+                >
+                Descargar
+                </a>
+                <tal:icon tal:replace="structure python:icons.tag('mimetype-' + file.content_type())" />(<span tal:content="python:human_readable_size(file.get_size())"></span>)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-responsive">
+        <table class="listing table"
+               id="tramitelink"
+               tal:condition="context/online"
+        >
+          <thead>
+            <tr>
+              <th i18n:translate="">
+              Egin tramitea internet bidez
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href=""
+                   tal:attributes="
+                     href context/url;
+                   "
+                   i18n:translate="label_start_tramite_online"
+                >
+                Hasi tramitea
+                </a>
+                <span class="online">
+                  <span class="text-hide"
+                        i18n:translate="label_do_it_online"
+                  >
+                  Do this tramitation online
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </metal:content-core>
+
+  </body>
+
+</html>

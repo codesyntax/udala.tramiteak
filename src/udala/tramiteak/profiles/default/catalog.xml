@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_catalog">
+  <!-- Index
+  <index meta_type="FieldIndex"
+         name="industry"
+  >
+    <indexed_attr value="industry" />
+  </index>
+-->
+  <!-- Metadata
+  <column value="industry" />
+-->
+  <index meta_type="DateIndex"
+         name="justification_date"
+  >
+    <indexed_attr value="justification_date" />
+  </index>
+  <index meta_type="DateIndex"
+         name="presentation_date"
+  >
+    <indexed_attr value="presentation_date" />
+  </index>
+</object>

@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="udala.tramiteak"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="udala.tramiteak: Install"
+      description="Package to configure a new udala.tramiteak site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="udala.tramiteak: Uninstall"
+      description="Uninstall udala.tramiteak setup."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      />
+
+  <!-- Hide Uninstall Profile-->
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="udala.tramiteak"
+      />
+
+
+  <include package=".upgrades" />
+
+</configure>

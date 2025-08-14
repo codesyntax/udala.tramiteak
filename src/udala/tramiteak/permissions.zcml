@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="udala.tramiteak"
+    >
+
+  <!-- -*- extra stuff goes here -*- -->
+  <permission
+      id="udala.tramiteak.AddTramitea"
+      title="udala.tramiteak: Add Tramitea"
+      />
+  <permission
+      id="udala.tramiteak.AddDirulaguntza"
+      title="udala.tramiteak: Add Dirulaguntza"
+      />
+
+</configure>

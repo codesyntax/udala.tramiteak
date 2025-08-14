@@ -1,0 +1,53 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="udala.tramiteak"
+    >
+
+  <!-- -*- extra stuff goes here -*- -->
+  <include package="plone.app.contentmenu" />
+
+  <browser:page
+      name="tramiteak_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".tramiteak_view.TramiteakView"
+      template="tramiteak_view.pt"
+      permission="zope2.View"
+      layer="udala.tramiteak.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Tramiteak"
+      />
+
+  <browser:page
+      name="dirulaguntzak_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".dirulaguntzak_view.DirulaguntzakView"
+      template="dirulaguntzak_view.pt"
+      permission="zope2.View"
+      layer="udala.tramiteak.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Dirulaguntzak"
+      />
+
+  <browser:page
+      name="view"
+      for="udala.tramiteak.content.tramitea.ITramitea"
+      class=".tramitea_view.TramiteaView"
+      template="tramitea_view.pt"
+      permission="zope2.View"
+      layer="udala.tramiteak.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      name="view"
+      for="udala.tramiteak.content.dirulaguntza.IDirulaguntza"
+      class=".dirulaguntza_view.DirulaguntzaView"
+      template="dirulaguntza_view.pt"
+      permission="zope2.View"
+      layer="udala.tramiteak.interfaces.IBrowserLayer"
+      />
+
+
+
+</configure>
