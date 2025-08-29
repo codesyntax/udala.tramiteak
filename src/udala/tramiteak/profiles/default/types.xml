@@ -7,8 +7,14 @@
           name="MyType"
   />
 -->
-  <object name="Tramitea" meta_type="Dexterity FTI"/>
-  <object name="Dirulaguntza" meta_type="Dexterity FTI"/>
-  <object name="Folder" meta_type="Dexterity FTI"/>
+  <object meta_type="Dexterity FTI"
+          name="Tramitea"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Dirulaguntza"
+  />
+  <object meta_type="Dexterity FTI"
+          name="Folder"
+  />
 
 </object>

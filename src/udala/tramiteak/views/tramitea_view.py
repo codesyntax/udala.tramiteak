@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # from udala.tramiteak import _
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
@@ -8,8 +6,9 @@ from zope.interface import Interface
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class ITramiteaView(Interface):
-    """ Marker Interface for ITramiteaView"""
+    """Marker Interface for ITramiteaView"""
 
 
 @implementer(ITramiteaView)
@@ -24,7 +23,7 @@ class TramiteaView(BrowserView):
 
     def files(self):
         # Why does not context.values('File') work?
-        return [f for f in self.context.values() if f.portal_type == 'File']
+        return [f for f in self.context.values() if f.portal_type == "File"]
 
     def is_pdf(self, file):
         return file.file.contentType == "application/pdf"

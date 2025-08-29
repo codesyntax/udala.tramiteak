@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-
 from DateTime import DateTime
+from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from Products.Five.browser import BrowserView
 from zope.interface import implementer
 from zope.interface import Interface
-from plone import api
 
 
 class IDirulaguntzakView(Interface):
@@ -22,7 +20,6 @@ class DirulaguntzakView(BrowserView):
         return DateTime().earliestTime()
 
     def contents(self):
-
         opened_contents = api.content.find(
             context=self.context,
             portal_type=["Dirulaguntza", "Link"],

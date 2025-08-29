@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
 # from plone.app.textfield import RichText
 # from plone.autoform import directives
-from udala.tramiteak import _
 from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
 from plone.dexterity.content import Container
 
 # from plone.namedfile import field as namedfile
 from plone.supermodel import model
+from udala.tramiteak import _
 
 # from plone.supermodel.directives import fieldset
 # from z3c.form.browser.radio import RadioFieldWidget
@@ -23,7 +22,10 @@ class ITramitea(model.Schema):
 
     bulegoan = schema.Bool(
         title=_("Bulegoan"),
-        description=_("Active esta opcion si el tramite se puede realizar en la oficina de atención a la ciudadanía."),
+        description=_(
+            "Active esta opcion si el tramite se puede realizar "
+            "en la oficina de atención a la ciudadanía."
+        ),
         default=False,
         required=False,
     )
@@ -40,7 +42,9 @@ class ITramitea(model.Schema):
     online = schema.Bool(
         title=_("Online"),
         description=_(
-            "Active esta opcion si el tramite se puede realizar online y escriba la direccion en la que se puede realizar el tramite en la siguiente casilla."
+            "Active esta opcion si el tramite se puede realizar online y "
+            "escriba la direccion en la que se puede realizar el tramite "
+            "en la siguiente casilla."
         ),
         default=False,
         required=False,
@@ -49,12 +53,12 @@ class ITramitea(model.Schema):
     url = schema.TextLine(
         title=_("Direccion web"),
         description=_(
-            "Escriba la direccion en la que se puede realizar este tramite online. Dejelo vacio si el tramite no se puede realizar online"
+            "Escriba la direccion en la que se puede realizar este tramite online. "
+            "Dejelo vacio si el tramite no se puede realizar online"
         ),
         default="",
         required=False,
     )
-
 
 
 alsoProvides(ITramitea["bulegoan"], ILanguageIndependentField)
@@ -64,5 +68,4 @@ alsoProvides(ITramitea["online"], ILanguageIndependentField)
 
 @implementer(ITramitea)
 class Tramitea(Container):
-    """ Content-type class for ITramitea
-    """
+    """Content-type class for ITramitea"""
