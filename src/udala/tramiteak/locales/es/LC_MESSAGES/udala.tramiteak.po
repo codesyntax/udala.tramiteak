@@ -111,7 +111,7 @@ msgstr "Desinstalar udala.tramiteak"
 #: udala/tramiteak/views/grant_view.pt:98
 #: udala/tramiteak/views/procedure_view.pt:97
 msgid "by phone"
-msgstr "por teléfono"
+msgstr "Por teléfono"
 
 #. Default: "Download"
 #: udala/tramiteak/views/grant_view.pt:61

@@ -77,7 +77,7 @@ msgstr "Aktibatuta bada, tramite hau hiritarren telefonoz egin daiteke"
 
 #: udala/tramiteak/views/grants_view.pt:34
 msgid "Last day to present the justification documentation"
-msgstr "Aktibatuta bada, tramite hau hiritarren harrerarako bulegoan egin daiteke"
+msgstr "Justifikazioa aurkezteko azken eguna"
 
 #: udala/tramiteak/content/grant.py:53
 msgid "Last day to present the justification documents"
@@ -111,7 +111,7 @@ msgstr "udala.tramiteak desinstalatu"
 #: udala/tramiteak/views/grant_view.pt:98
 #: udala/tramiteak/views/procedure_view.pt:97
 msgid "by phone"
-msgstr "telefonoz"
+msgstr "Telefonoz"
 
 #. Default: "Download"
 #: udala/tramiteak/views/grant_view.pt:61
