@@ -6,12 +6,12 @@
 
   <!-- -*- extra stuff goes here -*- -->
   <permission
-      id="udala.tramiteak.AddTramitea"
-      title="udala.tramiteak: Add Tramitea"
+      id="udala.tramiteak.AddProcedure"
+      title="udala.tramiteak: Add Procedure"
       />
   <permission
-      id="udala.tramiteak.AddDirulaguntza"
-      title="udala.tramiteak: Add Dirulaguntza"
+      id="udala.tramiteak.AddGrant"
+      title="udala.tramiteak: Add Grant"
       />
 
 </configure>

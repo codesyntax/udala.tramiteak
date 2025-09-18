@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="udala.tramiteak"
+>
+
+  <body>
+    <metal:content fill-slot="content-core"
+                   tal:define="
+                     toLocalizedTime nocall:here/@@plone/toLocalizedTime;
+                     contents view/contents;
+                     today view/today;
+                   "
+    >
+
+      <div id="grants-listing"
+           tal:condition="contents"
+      >
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex w-100 justify-content-between">
+            <strong class="w-50"
+                    i18n:translate=""
+            >
+              Grant object
+            </strong>
+            <strong class="w-25"
+                    i18n:translate=""
+            >
+              Last day to request the grant
+            </strong>
+            <strong class="w-25"
+                    i18n:translate=""
+            >
+              Last day to present the justification documentation
+            </strong>
+          </li>
+
+          <tal:item repeat="content contents">
+            <li class="list-group-item d-flex w-100 justify-content-between"
+                tal:define="
+                  content_object python:content.getObject();
+                  presentation_date python:content_object.presentation_date;
+                  presentation_date_loc python:presentation_date and toLocalizedTime(presentation_date);
+                  justification_date python:content_object.justification_date;
+                  justification_date_explanation python:content_object.justification_date_explanation;
+                  justification_date_loc python:justification_date and toLocalizedTime(justification_date) or justification_date_explanation;
+                "
+            >
+
+              <a class="w-50"
+                 href=""
+                 tal:content="content/Title"
+                 tal:attributes="
+                   href content/getURL;
+                 "
+              >
+                  Title
+              </a>
+
+
+
+              <span class="w-25"
+                    tal:content="presentation_date_loc"
+              ></span>
+              <span class="w-25"
+                    tal:content="justification_date_loc"
+              ></span>
+
+
+
+            </li>
+          </tal:item>
+
+        </ul>
+
+
+      </div>
+
+      <div class="nocontents"
+           tal:condition="not:contents"
+           i18n:translate="label_no_contents"
+      >
+      There are no grants
+      </div>
+    </metal:content>
+  </body>
+
+</html>

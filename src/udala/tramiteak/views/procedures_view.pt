@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="udala.Procedurek"
+>
+
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+
+      <div class="accordion"
+           id="procedures-accordion"
+           tal:define="
+             icons python:context.restrictedTraverse('@@iconresolver');
+             folder_brains python:context.restrictedTraverse('@@contentlisting')(portal_type='Folder');
+           "
+      >
+        <div class="accordion-item"
+             tal:repeat="folder_brain folder_brains"
+        >
+          <tal:items define="
+                       folder python:folder_brain.getObject();
+                     ">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed"
+                      aria-controls="collapseOne"
+                      aria-expanded="false"
+                      type="button"
+                      data-bs-target="#collapseOne"
+                      data-bs-toggle="collapse"
+                      tal:content="folder/Title"
+                      tal:attributes="
+                        data-bs-target string:#collapse${repeat/folder_brain/index};
+                        aria-controls string:collapse${repeat/folder_brain/index};
+                      "
+              >
+              </button>
+            </h2>
+            <div class="accordion-collapse collapse"
+                 data-bs-parent="#procedures-accordion"
+                 tal:attributes="
+                   id string:collapse${repeat/folder_brain/index};
+                 "
+            >
+              <div class="accordion-body"
+                   tal:define="
+                     procedure_brains python:folder.restrictedTraverse('@@contentlisting')(portal_type=['Procedure', 'Grant']);
+                   "
+              >
+                <ul class="list-group">
+                  <li class="list-group-item d-flex"
+                      tal:repeat="procedure_brain procedure_brains"
+                  >
+                    <tal:item define="
+                                procedure python:procedure_brain.getObject();
+                              ">
+                      <a class="p-2 flex-grow-1"
+                         href=""
+                         tal:content="procedure/Title"
+                         tal:attributes="
+                           href procedure/absolute_url;
+                         "
+                      >
+                        Title
+                      </a>
+                      <div class="procedure-mode p-2"
+                           condition="python:procedure.at_office or procedure.by_phone or procedure.online_url"
+                      >
+
+                        <span tal:condition="procedure/at_office"
+                              tal:replace="structure python:icons.tag('info-circle', tag_class='text-primary fs-5', tag_alt='Do this procedure at the citizen office')"
+                        ></span>
+
+                        <span tal:condition="procedure/by_phone"
+                              tal:replace="structure python:icons.tag('telephone', tag_class='text-primary fs-5', tag_alt='Do this procedure by phone')"
+                        ></span>
+
+                        <span tal:condition="procedure/online_url"
+                              tal:replace="structure python:icons.tag('globe', tag_class='text-primary fs-5', tag_alt='Do this procedure online')"
+                        ></span>
+
+
+                      </div>
+                    </tal:item></li>
+
+                </ul>
+              </div>
+            </div>
+          </tal:items>
+        </div>
+      </div>
+
+      <div id="other-procedures"
+           tal:define="
+             procedure_brains python:context.restrictedTraverse('@@contentlisting')(portal_type=['Procedure', 'Grant']);
+           "
+           tal:condition="procedure_brains"
+      >
+        <ul class="list-group">
+          <li class="list-group-item d-flex"
+              tal:repeat="procedure_brain procedure_brains"
+          >
+            <tal:item define="
+                        procedure python:procedure_brain.getObject();
+                      ">
+              <a class="p-2 flex-grow-1"
+                 href=""
+                 tal:content="procedure/Title"
+                 tal:attributes="
+                   href procedure/absolute_url;
+                 "
+              >
+                        Title
+              </a>
+              <div class="procedure-mode p-2"
+                   condition="python:procedure.at_office or procedure.by_phone or procedure.online_url"
+              >
+
+                <span tal:condition="procedure/at_office"
+                      tal:replace="structure python:icons.tag('info-circle', tag_class='text-primary fs-5', tag_alt='Do this procedure at the citizen office')"
+                ></span>
+
+                <span tal:condition="procedure/by_phone"
+                      tal:replace="structure python:icons.tag('telephone', tag_class='text-primary fs-5', tag_alt='Do this procedure by phone')"
+                ></span>
+
+                <span tal:condition="procedure/online_url"
+                      tal:replace="structure python:icons.tag('globe', tag_class='text-primary fs-5', tag_alt='Do this procedure online')"
+                ></span>
+
+
+              </div>
+            </tal:item></li>
+
+        </ul>
+
+      </div>
+
+    </metal:content-core>
+  </body>
+
+</html>

@@ -7,8 +7,8 @@
   <property name="view_methods"
             purge="false"
   >
-    <element value="tramiteak_view" />
-    <element value="dirulaguntzak_view" />
+    <element value="procedures_view" />
+    <element value="grants_view" />
   </property>
 
 </object>

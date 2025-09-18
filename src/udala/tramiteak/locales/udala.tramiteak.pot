@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-05-25 17:12+0000\n"
+"POT-Creation-Date: 2025-09-17 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,3 +16,148 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: udala.tramiteak\n"
+
+#: udala/tramiteak/content/dirulaguntza.py:25
+#: udala/tramiteak/content/tramitea.py:25
+msgid "Active esta opcion si el tramite se puede realizar en la oficina de atención a la ciudadanía."
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:44
+#: udala/tramiteak/content/tramitea.py:44
+msgid "Active esta opcion si el tramite se puede realizar online y escriba la direccion en la que se puede realizar el tramite en la siguiente casilla."
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:35
+#: udala/tramiteak/content/tramitea.py:35
+msgid "Active esta opcion si el tramite se puede realizar por telefono"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:24
+#: udala/tramiteak/content/tramitea.py:24
+msgid "Bulegoan"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:54
+#: udala/tramiteak/content/tramitea.py:54
+msgid "Direccion web"
+msgstr ""
+
+#: udala/tramiteak/profiles/default/types/Dirulaguntza.xml
+msgid "Dirulaguntza"
+msgstr ""
+
+#: udala/tramiteak/views/configure.zcml:31
+msgid "Dirulaguntzak"
+msgstr ""
+
+#: udala/tramiteak/views/dirulaguntza_view.pt:30
+#: udala/tramiteak/views/tramitea_view.pt:29
+msgid "Download documents"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:55
+#: udala/tramiteak/content/tramitea.py:55
+msgid "Escriba la direccion en la que se puede realizar este tramite online. Dejelo vacio si el tramite no se puede realizar online"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:74
+msgid "Explicacion del dia limite de presentacion de justificaciones"
+msgstr ""
+
+#: udala/tramiteak/views/dirulaguntza_view.pt:75
+#: udala/tramiteak/views/tramitea_view.pt:74
+msgid "How to do this procedure"
+msgstr ""
+
+#: udala/tramiteak/views/dirulaguntza_view.pt:84
+#: udala/tramiteak/views/tramitea_view.pt:83
+msgid "In the citizen's office"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:43
+#: udala/tramiteak/content/tramitea.py:43
+msgid "Online"
+msgstr ""
+
+#: udala/tramiteak/profiles.zcml:13
+msgid "Package to configure a new udala.tramiteak site"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:34
+#: udala/tramiteak/content/tramitea.py:34
+msgid "Por telefono"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:75
+msgid "Rellenar solo cuando en una subvencion no tenemos un dia determinado de limite, sino otro tipo de plazos."
+msgstr ""
+
+#: udala/tramiteak/views/dirulaguntza_view.pt:100
+#: udala/tramiteak/views/tramitea_view.pt:99
+msgid "Start this procedure online"
+msgstr ""
+
+#: udala/tramiteak/profiles/default/types/Tramitea.xml
+msgid "Tramitea"
+msgstr ""
+
+#: udala/tramiteak/views/configure.zcml:20
+msgid "Tramiteak"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:69
+msgid "Ultimo dia de presentacion de justificaciones"
+msgstr ""
+
+#: udala/tramiteak/content/dirulaguntza.py:64
+msgid "Ultimo dia de presentacion de solicitudes"
+msgstr ""
+
+#: udala/tramiteak/profiles.zcml:21
+msgid "Uninstall udala.tramiteak setup."
+msgstr ""
+
+#: udala/tramiteak/views/dirulaguntza_view.pt:92
+#: udala/tramiteak/views/tramitea_view.pt:91
+msgid "by phone"
+msgstr ""
+
+#. Default: "Eskaerak aurkezteko azken eguna"
+#: udala/tramiteak/views/dirulaguntzak_view.pt:27
+msgid "label_dirulaguntzen_eskaera_muga"
+msgstr ""
+
+#. Default: "Justifikazioa aurkezteko azken eguna"
+#: udala/tramiteak/views/dirulaguntzak_view.pt:30
+msgid "label_dirulaguntzen_justifikazio_muga"
+msgstr ""
+
+#. Default: "Diru-laguntzen zertarakoa"
+#: udala/tramiteak/views/dirulaguntzak_view.pt:24
+msgid "label_dirulaguntzen_zertarakoa"
+msgstr ""
+
+#. Default: "Download"
+#: udala/tramiteak/views/dirulaguntza_view.pt:57
+#: udala/tramiteak/views/tramitea_view.pt:56
+msgid "label_download"
+msgstr ""
+
+#. Default: "Ez dago dirulaguntzarik."
+#: udala/tramiteak/views/dirulaguntzak_view.pt:68
+msgid "label_no_contents"
+msgstr ""
+
+#. Default: "View"
+#: udala/tramiteak/views/dirulaguntza_view.pt:47
+#: udala/tramiteak/views/tramitea_view.pt:46
+msgid "label_view"
+msgstr ""
+
+#: udala/tramiteak/profiles.zcml:13
+msgid "udala.tramiteak: Install"
+msgstr ""
+
+#: udala/tramiteak/profiles.zcml:21
+msgid "udala.tramiteak: Uninstall"
+msgstr ""

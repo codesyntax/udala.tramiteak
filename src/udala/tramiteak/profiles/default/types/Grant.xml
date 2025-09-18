@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
         meta_type="Dexterity FTI"
-        name="Tramitea"
+        name="Grant"
         i18n:domain="udala.tramiteak"
 >
 
   <!-- Basic properties -->
   <property name="title"
             i18n:translate=""
-  >Tramitea</property>
+  >Grant</property>
   <property name="description"
             i18n:translate=""
   />
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Tramitea</property>
+  <property name="factory">Grant</property>
   <property name="icon_expr">string:puzzle</property>
   <property name="link_target" />
 
@@ -25,11 +25,11 @@
     <element value="File" />
   </property>
   <!-- Schema, class and security -->
-  <property name="add_permission">udala.tramiteak.AddTramitea</property>
-  <property name="klass">udala.tramiteak.content.tramitea.Tramitea</property>
+  <property name="add_permission">udala.tramiteak.AddGrant</property>
+  <property name="klass">udala.tramiteak.content.grant.Grant</property>
   <property name="model_file" />
   <property name="model_source" />
-  <property name="schema">udala.tramiteak.content.tramitea.ITramitea</property>
+  <property name="schema">udala.tramiteak.content.grant.IGrant</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors"
@@ -61,7 +61,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Tramitea</property>
+  <property name="add_view_expr">string:${folder_url}/++add++Grant</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>

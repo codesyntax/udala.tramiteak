@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
         meta_type="Dexterity FTI"
-        name="Dirulaguntza"
+        name="Procedure"
         i18n:domain="udala.tramiteak"
 >
 
   <!-- Basic properties -->
   <property name="title"
             i18n:translate=""
-  >Dirulaguntza</property>
+  >Procedure</property>
   <property name="description"
             i18n:translate=""
   />
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Dirulaguntza</property>
+  <property name="factory">Procedure</property>
   <property name="icon_expr">string:puzzle</property>
   <property name="link_target" />
 
@@ -25,11 +25,11 @@
     <element value="File" />
   </property>
   <!-- Schema, class and security -->
-  <property name="add_permission">udala.tramiteak.AddDirulaguntza</property>
-  <property name="klass">udala.tramiteak.content.dirulaguntza.Dirulaguntza</property>
+  <property name="add_permission">udala.tramiteak.AddProcedure</property>
+  <property name="klass">udala.tramiteak.content.procedure.Procedure</property>
   <property name="model_file" />
   <property name="model_source" />
-  <property name="schema">udala.tramiteak.content.dirulaguntza.IDirulaguntza</property>
+  <property name="schema">udala.tramiteak.content.procedure.IProcedure</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors"
@@ -61,7 +61,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Dirulaguntza</property>
+  <property name="add_view_expr">string:${folder_url}/++add++Procedure</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
   <property name="immediate_view">view</property>

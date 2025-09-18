@@ -9,41 +9,41 @@
   <include package="plone.app.contentmenu" />
 
   <browser:page
-      name="tramiteak_view"
+      name="procedures_view"
       for="plone.app.contenttypes.interfaces.IFolder"
-      class=".tramiteak_view.TramiteakView"
-      template="tramiteak_view.pt"
+      class=".procedures_view.ProceduresView"
+      template="procedures_view.pt"
       permission="zope2.View"
       layer="udala.tramiteak.interfaces.IBrowserLayer"
       menu="plone_displayviews"
-      title="Tramiteak"
+      title="Procedures view"
       />
 
   <browser:page
-      name="dirulaguntzak_view"
+      name="grants_view"
       for="plone.app.contenttypes.interfaces.IFolder"
-      class=".dirulaguntzak_view.DirulaguntzakView"
-      template="dirulaguntzak_view.pt"
+      class=".grants_view.GrantsView"
+      template="grants_view.pt"
       permission="zope2.View"
       layer="udala.tramiteak.interfaces.IBrowserLayer"
       menu="plone_displayviews"
-      title="Dirulaguntzak"
+      title="Grants view"
       />
 
   <browser:page
       name="view"
-      for="udala.tramiteak.content.tramitea.ITramitea"
-      class=".tramitea_view.TramiteaView"
-      template="tramitea_view.pt"
+      for="udala.tramiteak.content.procedure.IProcedure"
+      class=".procedure_view.ProcedureView"
+      template="procedure_view.pt"
       permission="zope2.View"
       layer="udala.tramiteak.interfaces.IBrowserLayer"
       />
 
   <browser:page
       name="view"
-      for="udala.tramiteak.content.dirulaguntza.IDirulaguntza"
-      class=".dirulaguntza_view.DirulaguntzaView"
-      template="dirulaguntza_view.pt"
+      for="udala.tramiteak.content.grant.IGrant"
+      class=".grant_view.GrantView"
+      template="grant_view.pt"
       permission="zope2.View"
       layer="udala.tramiteak.interfaces.IBrowserLayer"
       />

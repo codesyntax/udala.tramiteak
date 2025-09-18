@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      xml:lang="en"
+      i18n:domain="udala.tramiteak"
+>
+
+
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <metal:content-core define-macro="content-core">
+        <div tal:define="
+               toc context/table_of_contents|nothing;
+             "
+             tal:condition="context/text"
+             tal:content="structure python:context.text.output_relative_to(view.context)"
+             tal:attributes="
+               class python: toc and 'pat-autotoc' or '';
+             "
+        >
+        </div>
+      </metal:content-core>
+
+      <div class="my-5"
+           id="procedure-download-files"
+           tal:define="
+             batch python:context.restrictedTraverse('@@contentlisting')(portal_type='File');
+           "
+           tal:condition="batch"
+      >
+        <h2 i18n:translate="">Download documents</h2>
+
+        <ul class="list-group list-group-flush"
+            id="tramitation-files"
+            tal:define="
+              human_readable_size nocall:here/@@plone/human_readable_size;
+            "
+        >
+
+          <li class="list-group-item"
+              tal:repeat="brain batch"
+          >
+            <tal:item define="
+                        file python:brain.getObject();
+                      ">
+              <span tal:replace="file/Title"></span>
+                &nbsp;
+              <br />
+              <tal:condition condition="python:view.is_pdf(file)">
+                <a href=""
+                   tal:attributes="
+                     href string:${file/absolute_url}/view;
+                   "
+                   i18n:translate="label_view"
+                >
+                  View
+                </a>
+                |
+              </tal:condition>
+              <a href=""
+                 tal:attributes="
+                   href string:${file/absolute_url}/@@download/file;
+                 "
+                 i18n:translate="label_download"
+              >
+                Download
+              </a>
+              <tal:icon tal:replace="structure python:icons.tag('mimetype-' + file.content_type())" />(<span tal:content="python:human_readable_size(file.get_size())"></span>)
+            </tal:item>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="my-5"
+           id="procedure-do-this"
+           tal:condition="python:context.at_office or context.by_phone or context.online_url"
+      >
+        <h2 i18n:translate="">
+        How to do this procedure
+        </h2>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"
+              tal:condition="context/at_office"
+          >
+            <span tal:replace="structure python:icons.tag('info-circle', tag_class='text-primary fs-5', tag_alt='Do this procedure at the citizen office')"></span>
+            <span i18n:translate="">At the citizen's office</span>
+
+          </li>
+
+          <li class="list-group-item"
+              tal:condition="context/by_phone"
+          >
+            <span tal:replace="structure python:icons.tag('telephone', tag_class='text-primary fs-5', tag_alt='Do this procedure at the citizen office')"></span>
+            <span i18n:translate="">by phone</span>
+
+          </li>
+
+          <li class="list-group-item"
+              tal:condition="context/online_url"
+          >
+            <span tal:replace="structure python:icons.tag('globe', tag_class='text-primary fs-5', tag_alt='Do this procedure online')"></span>
+            <a href=""
+               tal:attributes="
+                 href context/online_url;
+               "
+               i18n:translate=""
+            >
+                Start this procedure online
+            </a>
+
+
+          </li></ul>
+
+      </div>
+
+
+    </metal:content-core>
+
+  </body>
+
+</html>

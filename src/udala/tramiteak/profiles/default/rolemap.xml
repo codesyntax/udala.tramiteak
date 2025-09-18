@@ -3,7 +3,7 @@
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
     <permission acquire="True"
-                name="udala.tramiteak: Add Tramitea"
+                name="udala.tramiteak: Add Procedure"
     >
       <role name="Manager" />
       <role name="Site Administrator" />
@@ -12,7 +12,7 @@
     </permission>
 
     <permission acquire="True"
-                name="udala.tramiteak: Add Dirulaguntza"
+                name="udala.tramiteak: Add Grant"
     >
       <role name="Manager" />
       <role name="Site Administrator" />
