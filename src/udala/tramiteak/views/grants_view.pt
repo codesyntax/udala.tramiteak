@@ -9,6 +9,7 @@
   <body>
     <metal:content fill-slot="content-core"
                    tal:define="
+                     icons python:context.restrictedTraverse('@@iconresolver');
                      toLocalizedTime nocall:here/@@plone/toLocalizedTime;
                      contents view/contents;
                      today view/today;
@@ -16,30 +17,25 @@
     >
 
       <div id="grants-listing"
+           class="card shadow-sm border-0"
            tal:condition="contents"
       >
 
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item d-flex w-100 justify-content-between">
-            <strong class="w-50"
-                    i18n:translate=""
-            >
-              Grant object
-            </strong>
-            <strong class="w-25"
-                    i18n:translate=""
-            >
-              Last day to request the grant
-            </strong>
-            <strong class="w-25"
-                    i18n:translate=""
-            >
-              Last day to present the justification documentation
-            </strong>
-          </li>
+        <div class="card-header bg-primary text-white d-flex w-100 justify-content-between align-items-center py-3 rounded-top">
+          <strong class="w-50 fs-5 mb-0" i18n:translate="">
+            Grant object
+          </strong>
+          <strong class="w-25 text-center fs-6" i18n:translate="">
+            Last day to request the grant
+          </strong>
+          <strong class="w-25 text-center fs-6" i18n:translate="">
+            Last day to present the justification documentation
+          </strong>
+        </div>
 
+        <ul class="list-group list-group-flush border rounded-bottom">
           <tal:item repeat="content contents">
-            <li class="list-group-item d-flex w-100 justify-content-between"
+            <li class="list-group-item list-group-item-action d-flex w-100 justify-content-between align-items-center py-3"
                 tal:define="
                   content_object python:content.getObject();
                   presentation_date python:content_object.presentation_date;
@@ -50,7 +46,7 @@
                 "
             >
 
-              <a class="w-50"
+              <a class="w-50 text-decoration-none fw-bold text-dark fs-5"
                  href=""
                  tal:content="content/Title"
                  tal:attributes="
@@ -60,30 +56,34 @@
                   Title
               </a>
 
+              <div class="w-25 text-center">
+                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm" tal:condition="presentation_date_loc">
+                  <span tal:replace="structure python:icons.tag('calendar', tag_class='me-1 text-primary')"></span>
+                  <span tal:content="presentation_date_loc"></span>
+                </span>
+              </div>
 
-
-              <span class="w-25"
-                    tal:content="presentation_date_loc"
-              ></span>
-              <span class="w-25"
-                    tal:content="justification_date_loc"
-              ></span>
-
-
+              <div class="w-25 text-center">
+                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm" tal:condition="justification_date_loc">
+                  <span tal:replace="structure python:icons.tag('calendar-check', tag_class='me-1 text-primary')"></span>
+                  <span tal:content="justification_date_loc"></span>
+                </span>
+              </div>
 
             </li>
           </tal:item>
-
         </ul>
-
 
       </div>
 
-      <div class="nocontents"
+      <div class="alert alert-info d-flex align-items-center shadow-sm mt-4"
+           role="alert"
            tal:condition="not:contents"
-           i18n:translate="label_no_contents"
       >
-      There are no grants
+        <span tal:replace="structure python:icons.tag('info-circle', tag_class='me-3 fs-4')"></span>
+        <div i18n:translate="label_no_contents">
+          There are no grants
+        </div>
       </div>
     </metal:content>
   </body>
