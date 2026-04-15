@@ -16,19 +16,25 @@
                    "
     >
 
-      <div id="grants-listing"
-           class="card shadow-sm border-0"
+      <div class="card shadow-sm border-0"
+           id="grants-listing"
            tal:condition="contents"
       >
 
         <div class="card-header bg-primary text-white d-flex w-100 justify-content-between align-items-center py-3 rounded-top">
-          <strong class="w-50 fs-5 mb-0" i18n:translate="">
+          <strong class="w-50 fs-5 mb-0"
+                  i18n:translate=""
+          >
             Grant object
           </strong>
-          <strong class="w-25 text-center fs-6" i18n:translate="">
+          <strong class="w-25 text-center fs-6"
+                  i18n:translate=""
+          >
             Last day to request the grant
           </strong>
-          <strong class="w-25 text-center fs-6" i18n:translate="">
+          <strong class="w-25 text-center fs-6"
+                  i18n:translate=""
+          >
             Last day to present the justification documentation
           </strong>
         </div>
@@ -57,14 +63,18 @@
               </a>
 
               <div class="w-25 text-center">
-                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm" tal:condition="presentation_date_loc">
+                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm"
+                      tal:condition="presentation_date_loc"
+                >
                   <span tal:replace="structure python:icons.tag('calendar', tag_class='me-1 text-primary')"></span>
                   <span tal:content="presentation_date_loc"></span>
                 </span>
               </div>
 
               <div class="w-25 text-center">
-                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm" tal:condition="justification_date_loc">
+                <span class="badge bg-light text-dark border p-2 fs-6 shadow-sm"
+                      tal:condition="justification_date_loc"
+                >
                   <span tal:replace="structure python:icons.tag('calendar-check', tag_class='me-1 text-primary')"></span>
                   <span tal:content="justification_date_loc"></span>
                 </span>

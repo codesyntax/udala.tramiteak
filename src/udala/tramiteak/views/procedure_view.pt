@@ -10,7 +10,10 @@
 
     <metal:content-core fill-slot="content-core">
       <metal:content-core define-macro="content-core"
-                          tal:define="icons python:context.restrictedTraverse('@@iconresolver');">
+                          tal:define="
+                            icons python:context.restrictedTraverse('@@iconresolver');
+                          "
+      >
         <div tal:define="
                toc context/table_of_contents|nothing;
              "
@@ -22,119 +25,137 @@
         >
         </div>
 
-      <div class="card my-5 shadow-sm border-0"
-           id="procedure-download-files"
-           tal:define="
-             batch python:context.restrictedTraverse('@@contentlisting')(portal_type='File');
-           "
-           tal:condition="batch"
-      >
-        <div class="card-header bg-light border-bottom pt-3 pb-2">
-          <h2 class="mb-0 text-dark" i18n:translate="">
-            <span tal:replace="structure python:icons.tag('folder2-open', tag_class='me-2 text-secondary')"></span>
+        <div class="card my-5 shadow-sm border-0"
+             id="procedure-download-files"
+             tal:define="
+               batch python:context.restrictedTraverse('@@contentlisting')(portal_type='File');
+             "
+             tal:condition="batch"
+        >
+          <div class="card-header bg-light border-bottom pt-3 pb-2">
+            <h2 class="mb-0 text-dark"
+                i18n:translate=""
+            >
+              <span tal:replace="structure python:icons.tag('folder2-open', tag_class='me-2 text-secondary')"></span>
             Download documents
-          </h2>
-        </div>
+            </h2>
+          </div>
 
-        <div class="card-body p-0">
-          <ul class="list-group list-group-flush rounded-bottom"
-              id="tramitation-files"
-              tal:define="
-                human_readable_size nocall:here/@@plone/human_readable_size;
-              "
-          >
-
-            <li class="list-group-item d-flex justify-content-between align-items-center py-3"
-                tal:repeat="brain batch"
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-bottom"
+                id="tramitation-files"
+                tal:define="
+                  human_readable_size nocall:here/@@plone/human_readable_size;
+                "
             >
-              <tal:item define="
-                          file python:brain.getObject();
-                        ">
-                <div class="d-flex align-items-center">
-                  <div class="text-primary me-3 fs-3 d-flex align-items-center" tal:content="structure python:icons.tag('mimetype-' + file.content_type())"></div>
-                  <div>
-                    <h6 class="mb-0 text-dark fw-bold" tal:content="file/Title">File Title</h6>
-                    <small class="text-muted" tal:content="python:human_readable_size(file.get_size())">Size</small>
-                  </div>
-                </div>
-                
-                <div class="btn-group shadow-sm" role="group">
-                  <a class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1"
-                     tal:condition="python:view.is_pdf(file)"
-                     tal:attributes="
-                       href string:${file/absolute_url}/view;
-                     "
-                     title="View" i18n:attributes="title label_view"
-                  >
-                    <span tal:replace="structure python:icons.tag('eye')"></span>
-                    <span i18n:translate="label_view">View</span>
-                  </a>
-                  <a class="btn btn-sm btn-primary d-flex align-items-center gap-1"
-                     tal:attributes="
-                       href string:${file/absolute_url}/@@download/file;
-                     "
-                     title="Download" i18n:attributes="title label_download"
-                  >
-                    <span tal:replace="structure python:icons.tag('download')"></span>
-                    <span i18n:translate="label_download">Download</span>
-                  </a>
-                </div>
-              </tal:item>
-            </li>
 
-          </ul>
-        </div>
-      </div>
-
-      <div class="card my-5 shadow-sm border-primary"
-           id="procedure-do-this"
-           tal:condition="python:context.at_office or context.by_phone or context.online_url"
-      >
-        <div class="card-header bg-primary text-white pt-3 pb-2">
-          <h2 class="mb-0" i18n:translate="">
-            <span tal:replace="structure python:icons.tag('info-circle', tag_class='me-2')"></span>
-            How to do this procedure
-          </h2>
-        </div>
-
-        <div class="card-body p-0">
-          <ul class="list-group list-group-flush rounded-bottom">
-            <li class="list-group-item d-flex align-items-center py-3"
-                tal:condition="context/at_office"
-            >
-              <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
-                <span tal:replace="structure python:icons.tag('info-circle', tag_class='text-primary fs-4', tag_alt='Do this procedure at the citizen office')"></span>
-              </div>
-              <span class="fs-5 fw-medium text-dark" i18n:translate="">At the citizen's office</span>
-            </li>
-
-            <li class="list-group-item d-flex align-items-center py-3"
-                tal:condition="context/by_phone"
-            >
-              <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
-                <span tal:replace="structure python:icons.tag('telephone', tag_class='text-primary fs-4', tag_alt='Do this procedure at the citizen office')"></span>
-              </div>
-              <span class="fs-5 fw-medium text-dark" i18n:translate="">by phone</span>
-            </li>
-
-            <li class="list-group-item d-flex align-items-center py-3"
-                tal:condition="context/online_url"
-            >
-              <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
-                <span tal:replace="structure python:icons.tag('globe', tag_class='text-primary fs-4', tag_alt='Do this procedure online')"></span>
-              </div>
-              <a class="btn btn-primary ms-2 shadow-sm"
-                 tal:attributes="
-                   href context/online_url;
-                 "
-                 i18n:translate=""
+              <li class="list-group-item d-flex justify-content-between align-items-center py-3"
+                  tal:repeat="brain batch"
               >
-                  Start this procedure online
-              </a>
-            </li>
-          </ul>
+                <tal:item define="
+                            file python:brain.getObject();
+                          ">
+                  <div class="d-flex align-items-center">
+                    <div class="text-primary me-3 fs-3 d-flex align-items-center"
+                         tal:content="structure python:icons.tag('mimetype-' + file.content_type())"
+                    ></div>
+                    <div>
+                      <h6 class="mb-0 text-dark fw-bold"
+                          tal:content="file/Title"
+                      >File Title</h6>
+                      <small class="text-muted"
+                             tal:content="python:human_readable_size(file.get_size())"
+                      >Size</small>
+                    </div>
+                  </div>
+
+                  <div class="btn-group shadow-sm"
+                       role="group"
+                  >
+                    <a class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1"
+                       title="View"
+                       tal:condition="python:view.is_pdf(file)"
+                       tal:attributes="
+                         href string:${file/absolute_url}/view;
+                       "
+                       i18n:attributes="title label_view"
+                    >
+                      <span tal:replace="structure python:icons.tag('eye')"></span>
+                      <span i18n:translate="label_view">View</span>
+                    </a>
+                    <a class="btn btn-sm btn-primary d-flex align-items-center gap-1"
+                       title="Download"
+                       tal:attributes="
+                         href string:${file/absolute_url}/@@download/file;
+                       "
+                       i18n:attributes="title label_download"
+                    >
+                      <span tal:replace="structure python:icons.tag('download')"></span>
+                      <span i18n:translate="label_download">Download</span>
+                    </a>
+                  </div>
+                </tal:item>
+              </li>
+
+            </ul>
+          </div>
         </div>
-      </div>
+
+        <div class="card my-5 shadow-sm border-primary"
+             id="procedure-do-this"
+             tal:condition="python:context.at_office or context.by_phone or context.online_url"
+        >
+          <div class="card-header bg-primary text-white pt-3 pb-2">
+            <h2 class="mb-0"
+                i18n:translate=""
+            >
+              <span tal:replace="structure python:icons.tag('info-circle', tag_class='me-2')"></span>
+            How to do this procedure
+            </h2>
+          </div>
+
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-bottom">
+              <li class="list-group-item d-flex align-items-center py-3"
+                  tal:condition="context/at_office"
+              >
+                <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
+                  <span tal:replace="structure python:icons.tag('info-circle', tag_class='text-primary fs-4', tag_alt='Do this procedure at the citizen office')"></span>
+                </div>
+                <span class="fs-5 fw-medium text-dark"
+                      i18n:translate=""
+                >At the citizen's office</span>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center py-3"
+                  tal:condition="context/by_phone"
+              >
+                <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
+                  <span tal:replace="structure python:icons.tag('telephone', tag_class='text-primary fs-4', tag_alt='Do this procedure at the citizen office')"></span>
+                </div>
+                <span class="fs-5 fw-medium text-dark"
+                      i18n:translate=""
+                >by phone</span>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center py-3"
+                  tal:condition="context/online_url"
+              >
+                <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center shadow-sm">
+                  <span tal:replace="structure python:icons.tag('globe', tag_class='text-primary fs-4', tag_alt='Do this procedure online')"></span>
+                </div>
+                <a class="btn btn-primary ms-2 shadow-sm"
+                   tal:attributes="
+                     href context/online_url;
+                   "
+                   i18n:translate=""
+                >
+                  Start this procedure online
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
 
       </metal:content-core>

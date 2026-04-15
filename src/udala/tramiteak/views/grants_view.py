@@ -7,7 +7,6 @@ from zope.interface import Interface
 
 
 class GrantsView(BrowserView):
-
     def today(self):
         return DateTime().earliestTime()
 
