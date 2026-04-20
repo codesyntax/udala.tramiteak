@@ -22,7 +22,7 @@ A Plone addon providing specific functionality for UdalPlone projects.
 
 ## Features
 
-- Custom content types and views specific to udala.tramiteak
+- Provides the `Procedure` and `Grant` content types for managing citizen services
 - RestAPI endpoints
 - Volto-ready backend setup
 
