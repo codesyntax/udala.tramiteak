@@ -2,8 +2,6 @@ from DateTime import DateTime
 from plone import api
 from plone.app.contentlisting.interfaces import IContentListing
 from Products.Five.browser import BrowserView
-from zope.interface import implementer
-from zope.interface import Interface
 
 
 class GrantsView(BrowserView):
